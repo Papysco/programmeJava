@@ -33,30 +33,39 @@ public class Livre{
     void setISBN(int isbn){this.ISBN = isbn;}
     void setCodeAlphaNumerique(String codeAlphaNumerique){this.codeAlphaNumerique = codeAlphaNumerique;}
 
+    Scanner sc = new Scanner(System.in);
     public void saisiLivre(){
-        Scanner sc = new Scanner(System.in);
+        
 
-        System.out.println("Entrer le titre du livre       : ");
-        titre = sc.nextLine();
-        System.out.println("Entrer le prenom de l'auteur   : ");
-        prenomAuteur = sc.nextLine();
-        System.out.println("Entrer le nom de l'auteur      : ");
-        nomAuteur = sc.nextLine();
-        System.out.println("Entrer la categorie            : ");
-        categorie = sc.nextLine();
-        System.out.println("Entrer le ISBN                 : ");
-        ISBN = sc.nextInt();
-        System.out.println("Entrer le code Alphanumerique  : ");
-        nomAuteur = sc.nextLine();
-
-        sc.close();
+        System.out.print("Entrer le titre du livre       : ");
+        setTitre(sc.nextLine());
+        System.out.print("Entrer le prenom de l'auteur   : ");
+        setPrenomAuteur(sc.nextLine());
+        System.out.print("Entrer le nom de l'auteur      : ");
+        setNomAuteur(sc.nextLine());
+        System.out.print("Entrer la categorie            : ");
+        setCategorie(sc.nextLine());
+        
+        System.out.print("Entrer le code Alphanumerique  : ");
+        setCategorie(sc.nextLine());
+        System.out.print("Entrer le ISBN                 : ");
+        setISBN(sc.nextInt());
+       // sc.close();
+        
     }
+    
 
-  /*  public void affichage(Livre livre) {
+    public void affichage() {
         System.out.println("");
-        System.out.println("titre : "+);
+        System.out.println("titre               : "+ getTitre());
+        System.out.println("prenom auteur       : "+ getPrenomAuteur());
+        System.out.println("nom auteur          : "+ getNomAuteur());
+        System.out.println("categorie           : "+ getCateorie());
+        System.out.println("code alphaNumerique : "+ getCodeAlphaNulerique());
+        System.out.println("ISBN                : "+ getISBN());
     }
-    */
+
+
 
 
 }
