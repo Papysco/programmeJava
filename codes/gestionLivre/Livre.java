@@ -3,12 +3,15 @@ import java.util.Scanner;
 
 public class Livre{
 
-   private String titre;
-   private String prenomAuteur;
-   private String nomAuteur;
-   private String categorie;
-   private int ISBN;
-   private String codeAlphaNumerique;
+   protected String titre;
+   protected String prenomAuteur;
+   protected String nomAuteur;
+   protected String categorie;
+   protected String codeAlphaNumerique;
+   protected int ISBN;
+   protected char statut;
+
+    
 
     public Livre(){
         this.titre = "";
@@ -16,15 +19,17 @@ public class Livre{
         this.nomAuteur = "";
         this.categorie = "";
         this.ISBN = 0;
+        this.statut = ' ';
         this.codeAlphaNumerique = "";
     }
 
-    String getTitre(){return titre;}
-    String getPrenomAuteur(){return prenomAuteur;}
-    String getNomAuteur(){return nomAuteur;}
-    String getCateorie(){return categorie;}
-    int getISBN(){return ISBN;}
-    String getCodeAlphaNulerique(){return codeAlphaNumerique;}
+    String getTitre(){return this.titre;}
+    String getPrenomAuteur(){return this.prenomAuteur;}
+    String getNomAuteur(){return this.nomAuteur;}
+    String getCateorie(){return this.categorie;}
+    int getISBN(){return this.ISBN;}
+    String getCodeAlphaNulerique(){return this.codeAlphaNumerique;}
+    char getStatut(){return this.statut;}
     
     void setTitre(String titre){this.titre = titre;}
     void setPrenomAuteur(String prenomAuteur){this.prenomAuteur = prenomAuteur;}
@@ -32,11 +37,11 @@ public class Livre{
     void setCategorie(String categorie){this.categorie = categorie;}
     void setISBN(int isbn){this.ISBN = isbn;}
     void setCodeAlphaNumerique(String codeAlphaNumerique){this.codeAlphaNumerique = codeAlphaNumerique;}
+    void setStatut(char caractere){this.statut = caractere;}
 
     Scanner sc = new Scanner(System.in);
     public void saisiLivre(){
         
-
         System.out.print("Entrer le titre du livre       : ");
         setTitre(sc.nextLine());
         System.out.print("Entrer le prenom de l'auteur   : ");
@@ -45,9 +50,10 @@ public class Livre{
         setNomAuteur(sc.nextLine());
         System.out.print("Entrer la categorie            : ");
         setCategorie(sc.nextLine());
-        
         System.out.print("Entrer le code Alphanumerique  : ");
-        setCategorie(sc.nextLine());
+        setCodeAlphaNumerique(sc.nextLine());
+        System.out.print("Entrer le statut du livre      : ");
+        setStatut(sc.next().charAt(0));
         System.out.print("Entrer le ISBN                 : ");
         setISBN(sc.nextInt());
        // sc.close();
@@ -56,17 +62,30 @@ public class Livre{
     
 
     public void affichage() {
-        System.out.println("");
-        System.out.println("titre               : "+ getTitre());
+        System.out.println("Titre               : "+ getTitre());
         System.out.println("prenom auteur       : "+ getPrenomAuteur());
         System.out.println("nom auteur          : "+ getNomAuteur());
         System.out.println("categorie           : "+ getCateorie());
         System.out.println("code alphaNumerique : "+ getCodeAlphaNulerique());
         System.out.println("ISBN                : "+ getISBN());
+        System.out.println("Statut              : "+ getStatut());
     }
 
+    public  void rechercherLivreDispo(Livre tab[]){
+        for (int i = 0; i < tab.length; i++) {
+            if (tab[i].statut == 'd') {
+                tab[i].affichage();
+            }
+        }
+    }
 
-
+    public void rechercheLivre(Livre tab[], String nomLivre){
+        for (int i = 0; i < tab.length; i++) {
+            if (tab[i].titre == nomLivre) {
+                tab[i].affichage();
+            }
+        }
+    }
 
 }
 
