@@ -11,16 +11,7 @@ public class Livre{
    protected int ISBN;
    protected char statut;
 
-    
-
     public Livre(){
-        this.titre = "";
-        this.prenomAuteur = "";
-        this.nomAuteur = "";
-        this.categorie = "";
-        this.ISBN = 0;
-        this.statut = ' ';
-        this.codeAlphaNumerique = "";
     }
 
     String getTitre(){return this.titre;}
@@ -67,25 +58,47 @@ public class Livre{
         System.out.println("nom auteur          : "+ getNomAuteur());
         System.out.println("categorie           : "+ getCateorie());
         System.out.println("code alphaNumerique : "+ getCodeAlphaNulerique());
-        System.out.println("ISBN                : "+ getISBN());
         System.out.println("Statut              : "+ getStatut());
+        System.out.println("ISBN                : "+ getISBN());
     }
+
 
     public  void rechercherLivreDispo(Livre tab[]){
-        for (int i = 0; i < tab.length; i++) {
-            if (tab[i].statut == 'd') {
-                tab[i].affichage();
+        System.out.println("Les livres disponibles : ");
+        for (Livre livre : tab) {
+            if (livre != null) {
+                if (livre.statut == 'd'|| livre.statut == 'D') {
+                    livre.affichage();
+                    System.out.println();
+                }
             }
         }
     }
 
+
+    public void  rechercherLivreEmprunte(Livre tab[]){
+        System.out.println("Les livres empruntés : ");
+        for (Livre livre : tab) {
+            if (livre != null) {
+                if (livre.statut == 'i'|| livre.statut == 'I') {
+                    System.out.println();
+                    livre.affichage();
+                }
+            }
+        }
+    }
+
+    
     public void rechercheLivre(Livre tab[], String nomLivre){
-        for (int i = 0; i < tab.length; i++) {
-            if (tab[i].titre == nomLivre) {
-                tab[i].affichage();
+        for (Livre livre : tab) {
+            if (livre != null) {
+                if (livre.titre == nomLivre) {
+                    livre.affichage();
+                }
             }
         }
     }
 
+   
 }
 

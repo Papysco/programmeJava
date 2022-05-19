@@ -50,30 +50,41 @@ public class Eleve {
 
     public void saisiEleve(){
         int i = 0;
+        int j = 0;
+
         System.out.println("");
         System.out.print("Entrer le ID                : ");setId(Integer.parseInt(scEleve.nextLine()));
         System.out.print("Entrer le prenom            : ");setPrenom(scEleve.nextLine());
         System.out.print("Entrer le nom               : ");setNom(scEleve.nextLine());
-        System.out.print("Combien de livre emprunte   : "); i = Integer.parseInt(scEleve.nextLine());
+        System.out.print("Combien de livre emprunte   : "); //i = Integer.parseInt(scEleve.nextLine());
+        i = scEleve.nextInt();
         
-        if (i > 0) {
-            for (int j = 0; j < i; j++) {
-                this.tabEmprunt[j].saisiLivre();
+       if (i > 0) {
+           //Livre tableau[] = new Livre[2];
+         for (j = 0; j < i; j++) {
+                Livre livre = new Livre();
+                livre.saisiLivre();
+                this.tabEmprunt[j] = livre;
             }
+    
         }
-
+        
+       
     }
 
     public void afficherEleve(){
         System.out.println("");
-        System.out.println("Prenom      : ");getPrenom();
-        System.out.println("Nom         : ");getNom();
-        System.out.println("ID          : ");getId();
+        System.out.println("Prenom      : " + getPrenom());
+        System.out.println("Nom         : " + getNom());
+        System.out.println("ID          : " + getId());
         System.out.println("Livres      : ");
         
         for (Livre tab : tabEmprunt) {
             System.out.println("");
-            tab.affichage();
+            if (tab != null) {
+                tab.affichage();
+            }
+            
         }
 
     }
