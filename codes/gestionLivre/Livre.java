@@ -2,14 +2,13 @@
 import java.util.Scanner;
 
 public class Livre{
-
-   protected String titre;
-   protected String prenomAuteur;
-   protected String nomAuteur;
-   protected String categorie;
-   protected String codeAlphaNumerique;
-   protected int ISBN;
-   protected char statut;
+    private String titre;
+    private String prenomAuteur;
+    private String nomAuteur;
+    private String categorie;
+    private String codeAlphaNumerique;
+    private int ISBN;
+    private char statut;
 
     public Livre(){
     }
@@ -48,9 +47,7 @@ public class Livre{
         System.out.print("Entrer le ISBN                 : ");
         setISBN(sc.nextInt());
        // sc.close();
-        
     }
-    
 
     public void affichage() {
         System.out.println("Titre               : "+ getTitre());
@@ -61,7 +58,6 @@ public class Livre{
         System.out.println("Statut              : "+ getStatut());
         System.out.println("ISBN                : "+ getISBN());
     }
-
 
     public  void rechercherLivreDispo(Livre tab[]){
         System.out.println("Les livres disponibles : ");
@@ -74,7 +70,6 @@ public class Livre{
             }
         }
     }
-
 
     public void  rechercherLivreEmprunte(Livre tab[]){
         System.out.println("Les livres empruntés : ");

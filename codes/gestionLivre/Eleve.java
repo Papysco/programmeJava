@@ -1,5 +1,5 @@
-
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Eleve {
@@ -56,24 +56,16 @@ public class Eleve {
         System.out.print("Entrer le ID                : ");setId(Integer.parseInt(scEleve.nextLine()));
         System.out.print("Entrer le prenom            : ");setPrenom(scEleve.nextLine());
         System.out.print("Entrer le nom               : ");setNom(scEleve.nextLine());
-        System.out.print("Combien de livre emprunte   : "); //i = Integer.parseInt(scEleve.nextLine());
-        i = scEleve.nextInt();
-        
-       if (i > 0) {
-           //Livre tableau[] = new Livre[2];
-         for (j = 0; j < i; j++) {
+        //System.out.print("Combien de livre emprunte   : ");i = scEleve.nextInt();
+
+            for (j = 0; j < 2; j++) {
                 Livre livre = new Livre();
-                livre.saisiLivre();
                 this.tabEmprunt[j] = livre;
             }
-    
-        }
-        
-       
     }
 
     public void afficherEleve(){
-        System.out.println("");
+        System.out.println();
         System.out.println("Prenom      : " + getPrenom());
         System.out.println("Nom         : " + getNom());
         System.out.println("ID          : " + getId());
@@ -81,12 +73,54 @@ public class Eleve {
         
         for (Livre tab : tabEmprunt) {
             System.out.println("");
-            if (tab != null) {
+            if (tab.getTitre() != null) {
                 tab.affichage();
             }
             
         }
 
+    }
+
+    public void emprunterLivre(Livre tab[], Eleve tabEleve[] ,int id){
+        boolean trouve = false;
+        String titre;
+        int isbn,j;
+        Livre myLivre = new Livre();
+
+        System.out.println("\t EMPRUNT ! \n");
+        for(int i = 0; i < tabEleve.length; i++) {
+            if (tabEleve[i].getId() == id) {
+                trouve = true;
+                System.out.print("Entrer le titre du livre : ");
+                titre = scEleve.nextLine();
+                System.out.print("Entrer l'ISBN du livre : ");
+                isbn = scEleve.nextInt();
+
+                for (Livre livre : tab) {
+                    if (livre != null) {
+                        if ((livre.getTitre().equals(titre)) && (livre.getISBN() == isbn)){
+                            livre.setStatut('i');
+                            myLivre = livre;
+                        }
+                    }
+
+                }
+
+                if (tabEleve[i].tabEmprunt[0].getTitre() == null){
+                    tabEleve[i].tabEmprunt[0] = myLivre;
+                    break;
+                } else if (tabEleve[i].tabEmprunt[1].getTitre() == null) {
+                    tabEleve[i].tabEmprunt[1] = myLivre;
+                    break;
+                }
+
+
+            }
+        }
+
+        if(!trouve){
+            System.out.println("Identifiant non trouve !");
+        }
     }
 
     @Override
