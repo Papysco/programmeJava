@@ -113,8 +113,47 @@ public class Eleve {
                     tabEleve[i].tabEmprunt[1] = myLivre;
                     break;
                 }
+            }
+        }
 
+        if(!trouve){
+            System.out.println("Identifiant non trouve !");
+        }
+    }
 
+    public void rembourserLivre(Livre tab[], Eleve tabEleve[] ,int id){
+        boolean trouve = false;
+        String titre;
+        int isbn;
+        Livre myLivre = new Livre();
+
+        System.out.println("\t REMBOURSER LIVRE ! \n");
+
+        for(int i = 0; i < tabEleve.length; i++) {
+            if (tabEleve[i].getId() == id) {
+                trouve = true;
+                System.out.print("Entrer le titre du livre : ");
+                titre = scEleve.nextLine();
+                System.out.print("Entrer l'ISBN du livre : ");
+                isbn = scEleve.nextInt();
+
+                for (Livre livre : tab) {
+                    if (livre != null) {
+                        if ((livre.getTitre().equals(titre)) && (livre.getISBN() == isbn)){
+                            livre.setStatut('d');
+                            myLivre = livre;
+                        }
+                    }
+
+                }
+
+                if (tabEleve[i].tabEmprunt[0] == myLivre){
+                    tabEleve[i].tabEmprunt[0] = null;
+                    break;
+                } else if (tabEleve[i].tabEmprunt[1] == myLivre) {
+                    tabEleve[i].tabEmprunt[1] = null;
+                    break;
+                }
             }
         }
 

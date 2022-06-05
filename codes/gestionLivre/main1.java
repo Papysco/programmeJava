@@ -29,6 +29,7 @@ public class main1{
             System.out.println("6.AFFICHER LES LIVRES EMPRUNTES ");
             System.out.println("7.RECHERCHER UN LIVRE ");
             System.out.println("8.EMPRUNTER UN LIVRE ");
+            System.out.println("9.REMBOURSER UN LIVRE ");
             System.out.println("0.QUITTER ");
             System.out.print("Veuillez entrer votre choix : ");
             choix =  sc.nextInt();
@@ -55,6 +56,11 @@ public class main1{
                     System.out.print("Entrer le id de l'eleve : ");
                     id = sc.nextInt();
                     eleve.emprunterLivre(tabLivre,student,id);
+                    break;
+                case 9:
+                    System.out.print("Entrer le id de l'eleve : ");
+                    id = sc.nextInt();
+                    eleve.rembourserLivre(tabLivre,student,id);
                     break;
                 case 0: System.out.println("bye!");
                     break;
